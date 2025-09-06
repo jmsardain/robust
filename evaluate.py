@@ -109,17 +109,12 @@ def evaluate(dataset, model="gpt-4o-mini", n=10):
         prompt = DEFAULT_PROMPT.format(schema=schema_str, question=question)
         pred = client.generate(prompt)
         # print(pred)
-        # pred = pred.replace("```sql", "")
-        # pred_sql = pred.replace("```", "")
         pred_sql = strip_code_fences(pred) ## models love to add markdown when it's a code .. get code in between markdown style
 
-        # if normalize_sql(pred) == normalize_sql(gold_sql): ## semantic similarity is not really the best approach here  ....
-            # correct += 1
         exec_correct = execution_match(path_database, normalize_sql(gold_sql), normalize_sql(pred_sql))
         # exec_correct = execution_match_scalar(path_database, normalize_sql(gold_sql), normalize_sql(pred))
 
         if exec_correct:
             correct += 1
 
-        # print(f"Q: {question}\nGold: {gold_sql}\nPred: {pred}\n---")
     return correct / denominator

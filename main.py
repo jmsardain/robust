@@ -20,23 +20,6 @@ def main():
     with open("performance_"+args.model+".txt", "a") as f:
         f.write(f"For {args.syst} Accuracy: {acc}\n")
     
-    # dev_database_dict = [
-    #     'california_schools', ##
-    #     'card_games', ##
-    #     'codebase_community', ##
-    #     'debit_card_specializing', ##
-    #     'european_football_2', ##
-    #     'formula_1', ##
-    #     'student_club', ##
-    #     'superhero', ##
-    #     'thrombosis_prediction', ##
-    #     'toxicology', ##
-    # ]
-    # path = "/Users/jmsardain/Downloads/minidev/MINIDEV/"
-    # for dev in dev_database_dict:
-    #     db_path = f"{path}/dev_databases/{dev}/{dev}.sqlite"
-    #     schema = getSchema(db_path)
-    #     print(f"Database {dev}\n Schema {schema}\n")
 
 if __name__ == "__main__":
 
